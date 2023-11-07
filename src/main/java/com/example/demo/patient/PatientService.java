@@ -21,4 +21,8 @@ public class PatientService {
     public Patient addNewPatient(Patient patient) {
         return patientRepository.savePatient(patient);
     }
+
+    public Patient getOnePatient(long id) { return patientRepository.findPatientById(id); }
+
+    public void deletePatient(long id) { patientRepository.deletePatientById(id); }
 }
