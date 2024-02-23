@@ -1,4 +1,4 @@
-package com.example.demo.patient;
+package com.example.demo.main;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.util.Streamable;

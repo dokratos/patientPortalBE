@@ -1,4 +1,4 @@
-package com.example.demo.patient;
+package com.example.demo.main;
 
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
