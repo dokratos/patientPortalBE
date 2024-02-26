@@ -1,6 +1,9 @@
 package com.example.demo.patient.repository;
 
 import com.example.demo.patient.model.Patient;
+import com.example.demo.patient.model.PatientRequestDTO;
+import com.example.demo.patient.model.PatientResponseDTO;
+import com.example.demo.patient.model.PatientMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.util.Streamable;
 import org.springframework.stereotype.Repository;
@@ -13,11 +16,23 @@ public class PatientRepository {
 
     public PatientRepository(@Autowired JpaRepo repo) { this.repo = repo; }
 
-    public List<Patient> findAllPatients() { return Streamable.of(repo.findAll()).toList(); }
+    public List<PatientResponseDTO> findAllPatients() {
+        return Streamable.of(repo.findAll())
+                .map(PatientMapper::patientDTOMapper)
+                .toList();
+    }
 
-    public Patient savePatient(Patient patient) { return repo.save(patient); }
+    public PatientResponseDTO savePatient(PatientRequestDTO patient) {
+        Patient newPatient = repo.save(new Patient(patient.name(),
+                patient.lastName(),
+                patient.INR()));
+        return PatientMapper.patientDTOMapper(newPatient);
+    }
 
-    public Patient findPatientById(long id) { return repo.findById(id).orElse(null); }
+    public PatientResponseDTO findPatientById(long id) {
+        Patient patient = repo.findById(id).orElse(null);
+        return PatientMapper.patientDTOMapper(patient);
+    }
 
     public void deletePatientById(long id) {
         if (findPatientById(id) != null) {

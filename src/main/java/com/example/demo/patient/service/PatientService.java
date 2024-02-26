@@ -1,6 +1,9 @@
 package com.example.demo.patient.service;
 
 import com.example.demo.patient.model.Patient;
+import com.example.demo.patient.model.PatientRequestDTO;
+import com.example.demo.patient.model.PatientResponseDTO;
+import com.example.demo.patient.model.PatientMapper;
 import com.example.demo.patient.repository.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,15 +19,17 @@ public class PatientService {
         this.patientRepository = repo;
     }
 
-    public List<Patient> findAllPatient() {
+    public List<PatientResponseDTO> findAllPatient() {
         return patientRepository.findAllPatients();
     }
 
-    public Patient addNewPatient(Patient patient) {
+    public PatientResponseDTO addNewPatient(PatientRequestDTO patient) {
         return patientRepository.savePatient(patient);
     }
 
-    public Patient getOnePatient(long id) { return patientRepository.findPatientById(id); }
+    public PatientResponseDTO getOnePatient(long id) {
+        return patientRepository.findPatientById(id);
+    }
 
     public void deletePatient(long id) { patientRepository.deletePatientById(id); }
 }

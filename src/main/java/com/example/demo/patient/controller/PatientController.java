@@ -1,7 +1,8 @@
 package com.example.demo.patient.controller;
 
+import com.example.demo.patient.model.PatientRequestDTO;
+import com.example.demo.patient.model.PatientResponseDTO;
 import com.example.demo.patient.service.PatientService;
-import com.example.demo.patient.model.Patient;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -20,30 +21,24 @@ public class PatientController {
         this.service = service;
     }
 
-    @GetMapping("/")
-    @Operation(description = "online check", summary = "returns 'we are online!'")
-    private String getRequest() {
-        return "We are online!";
-    }
-
     @GetMapping("/patients")
     @Operation(description = "get all patients", summary = "returns a list of all patients")
-    private ResponseEntity<List<Patient>> getPatients() {
+    private ResponseEntity<List<PatientResponseDTO>> getPatients() {
 
         return ResponseEntity.ok(service.findAllPatient());
     }
 
     @GetMapping("/patients/{id}")
     @Operation(description = "get one patient", summary = "returns one patient by id")
-    private ResponseEntity<Patient> getPatientById(@PathVariable long id) {
-        Patient onePatient = service.getOnePatient(id);
+    private ResponseEntity<PatientResponseDTO> getPatientById(@PathVariable long id) {
+        PatientResponseDTO onePatient = service.getOnePatient(id);
 
         return ResponseEntity.ok(onePatient);
     }
 
     @PostMapping("/patients")
-    private ResponseEntity<Patient> addPatient(@RequestBody Patient newPatient) {
-        Patient patient = service.addNewPatient(newPatient);
+    private ResponseEntity<PatientResponseDTO> addPatient(@RequestBody PatientRequestDTO newPatient) {
+        PatientResponseDTO patient = service.addNewPatient(newPatient);
 
         return ResponseEntity
                 .accepted()
