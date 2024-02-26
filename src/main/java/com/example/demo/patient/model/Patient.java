@@ -11,9 +11,13 @@ public class Patient {
     @Column(name = "firstName", nullable = false)
     private String name;
 
-    public Patient() {
+    @Column(name = "lastName", nullable = false)
+    private String lastName;
 
-    }
+    @Column(name = "INR", nullable = false)
+    private double INR;
+
+    public Patient() {}
 
     public String getName() {
         return name;
@@ -23,12 +27,12 @@ public class Patient {
         this.name = name;
     }
 
-    public String getSurname() {
-        return surname;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
+    public void setLastName(String surname) {
+        this.lastName = surname;
     }
 
     public double getINR() {
@@ -39,12 +43,6 @@ public class Patient {
         this.INR = INR;
     }
 
-    @Column(name = "lastName", nullable = false)
-    private String surname;
-
-    @Column
-    private double INR;
-
     public void setId(Long id) {
         this.id = id;
     }
@@ -53,9 +51,9 @@ public class Patient {
         return id;
     }
 
-    public Patient(String name, String surname, double INR) {
+    public Patient(String name, String lastName, double INR) {
         this.INR = INR;
         this.name = name;
-        this.surname = surname;
+        this.lastName = lastName;
     }
 }
