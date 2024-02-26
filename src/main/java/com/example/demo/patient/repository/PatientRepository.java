@@ -1,5 +1,6 @@
-package com.example.demo.main;
+package com.example.demo.patient.repository;
 
+import com.example.demo.patient.model.Patient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.util.Streamable;
 import org.springframework.stereotype.Repository;

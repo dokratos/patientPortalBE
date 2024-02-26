@@ -1,5 +1,7 @@
-package com.example.demo.main;
+package com.example.demo.patient.service;
 
+import com.example.demo.patient.model.Patient;
+import com.example.demo.patient.repository.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

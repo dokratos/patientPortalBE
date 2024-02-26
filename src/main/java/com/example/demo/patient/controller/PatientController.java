@@ -1,5 +1,7 @@
-package com.example.demo.main;
+package com.example.demo.patient.controller;
 
+import com.example.demo.patient.service.PatientService;
+import com.example.demo.patient.model.Patient;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
