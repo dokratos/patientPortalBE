@@ -12,10 +12,6 @@ class PatientPortalApplicationTests {
 	@Value("${server.port}")
 	private int port;
 
-	@Autowired
-	RestTemplate restTemplate;
-
-
 	@Test
 	void contextLoads() {
 	}
