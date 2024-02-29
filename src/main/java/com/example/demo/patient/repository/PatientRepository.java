@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public abstract class PatientRepository {
+public class PatientRepository {
     JpaRepo repo;
 
     public PatientRepository(@Autowired JpaRepo repo) { this.repo = repo; }
