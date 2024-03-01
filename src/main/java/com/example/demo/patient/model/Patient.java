@@ -1,7 +1,6 @@
 package com.example.demo.patient.model;
 
 import jakarta.persistence.*;
-
 @Entity
 public class Patient {
     @Id

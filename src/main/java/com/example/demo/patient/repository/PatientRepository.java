@@ -5,11 +5,11 @@ import com.example.demo.patient.model.PatientRequestDTO;
 import com.example.demo.patient.model.PatientResponseDTO;
 import com.example.demo.patient.model.PatientMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.util.Streamable;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-
 @Repository
 public class PatientRepository {
     JpaRepo repo;
