@@ -36,7 +36,7 @@ public class PatientController {
         return ResponseEntity.ok(onePatient);
     }
 
-    @PostMapping("/patients")
+    @PostMapping(value = "/patients", consumes = {"*/*"})
     private ResponseEntity<PatientResponseDTO> addPatient(@RequestBody PatientRequestDTO newPatient) {
         PatientResponseDTO patient = service.addNewPatient(newPatient);
 
