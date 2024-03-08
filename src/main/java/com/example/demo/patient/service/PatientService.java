@@ -32,4 +32,8 @@ public class PatientService {
     }
 
     public void deletePatient(long id) { patientRepository.deletePatientById(id); }
+
+//    public PatientResponseDTO updatePatient(PatientResponseDTO patient) {
+//
+//    }
 }
