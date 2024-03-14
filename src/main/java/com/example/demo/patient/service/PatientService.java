@@ -1,14 +1,14 @@
 package com.example.demo.patient.service;
 
-import com.example.demo.patient.model.Patient;
-import com.example.demo.patient.model.PatientRequestDTO;
-import com.example.demo.patient.model.PatientResponseDTO;
-import com.example.demo.patient.model.PatientMapper;
+import com.example.demo.patient.model.NewPatientDTO;
+import com.example.demo.patient.model.PatientDTO;
 import com.example.demo.patient.repository.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.webjars.NotFoundException;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PatientService {
@@ -19,21 +19,28 @@ public class PatientService {
         this.patientRepository = repo;
     }
 
-    public List<PatientResponseDTO> findAllPatient() {
+    public List<PatientDTO> findAllPatient() {
         return patientRepository.findAllPatients();
     }
 
-    public PatientResponseDTO addNewPatient(PatientRequestDTO patient) {
+    public PatientDTO addNewPatient(NewPatientDTO patient) {
         return patientRepository.savePatient(patient);
     }
 
-    public PatientResponseDTO getOnePatient(long id) {
+    public Optional<PatientDTO> getOnePatient(long id) {
         return patientRepository.findPatientById(id);
     }
 
     public void deletePatient(long id) { patientRepository.deletePatientById(id); }
 
-//    public PatientResponseDTO updatePatient(PatientResponseDTO patient) {
-//
-//    }
+    public PatientDTO updatePatient(PatientDTO patient) {
+
+        PatientDTO updatedPatient = patientRepository.updatePatient(patient);
+
+        if (updatedPatient == null) {
+            throw new NotFoundException("Patient was not found");
+        }
+
+        return updatedPatient;
+    }
 }

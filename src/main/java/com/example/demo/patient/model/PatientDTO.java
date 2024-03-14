@@ -1,6 +1,6 @@
 package com.example.demo.patient.model;
 
-public record PatientResponseDTO(
+public record PatientDTO(
                          Long id,
                          String name,
                          String lastName,
